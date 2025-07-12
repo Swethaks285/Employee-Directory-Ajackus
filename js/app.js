@@ -1,4 +1,3 @@
-
 // Initial mock employee datas
 let employees = [ // Array of employee objects containing id, first name, last name, email, department, and role
   { id: "E001", firstName: "Alice", lastName: "Smith", email: "alice@example.com", department: "HR", role: "Manager" },
