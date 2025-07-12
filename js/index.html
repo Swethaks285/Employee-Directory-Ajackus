@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- Declares the document type as HTML5 -->
+
+<html lang="en">
+<!-- Root element of the document; "lang='en'" sets the language to English -->
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Sets character encoding to UTF-8 to support most characters/languages -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Ensures responsive design by making the layout adapt to screen width -->
+
+  <title>Employee Directory</title>
+  <!-- Sets the title shown on the browser tab -->
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <!-- Links to an external CSS file for styling the page -->
+
+  <style>
+    /* Minimal inline style for modal error display */
+    .form-errors {
+      color: red; /* Makes error text red */
+      margin-bottom: 10px; /* Adds spacing below error text */
+    }
+  </style>
+  <!-- Inline CSS used for styling validation error messages inside modals -->
+</head>
+
+<body>
+<!-- Start of the visible body content -->
+
+<header>
+  <!-- Header section of the page -->
+  <h1>Employee Directory</h1>
+  <!-- Main heading -->
+
+  <div class="search-add">
+    <!-- Container for search and action buttons -->
+    <input type="search" id="searchInput" placeholder="Search by name or email" />
+    <!-- Search input field -->
+
+    <button id="filterBtn">Filter</button>
+    <!-- Button to open filter modal -->
+
+    <button id="addEmpBtn" class="add-btn">Add Employee</button>
+    <!-- Button to open add employee modal -->
+  </div>
+</header>
+
+<section class="controls">
+  <!-- Section for sort and show-per-page controls -->
+
+  <label>
+    Sort:
+    <select id="sortSelect">
+      <!-- Dropdown to select sorting option -->
+      <option value="">--Select--</option>
+      <option value="firstName">First Name</option>
+      <option value="lastName">Last Name</option>
+      <option value="department">Department</option>
+      <option value="role">Role</option>
+    </select>
+  </label>
+
+  <label>
+    Show:
+    <select id="showSelect">
+      <!-- Dropdown to select how many employees to show per page -->
+      <option value="5">5</option>
+      <option value="10" selected>10</option>
+      <!-- Default is 10 -->
+      <option value="20">20</option>
+    </select>
+  </label>
+</section>
+
+<main id="employeeList" class="employee-list">
+  <!-- Main content area to display employee cards -->
+  <!-- JavaScript will populate employee cards here -->
+</main>
+
+<footer>
+  <!-- Footer content -->
+  © 2025 Employee Directory App. All rights reserved.
+</footer>
+
+<!-- Add/Edit Employee Modal -->
+<div id="addModal" class="modal" style="display:none;">
+  <!-- Modal for adding a new employee; hidden by default -->
+
+  <div class="modal-content">
+    <!-- Content inside the modal -->
+
+    <span id="addClose" class="close">&times;</span>
+    <!-- '×' button to close the modal -->
+
+    <h2>Add Employee</h2>
+    <!-- Modal heading -->
+
+    <form id="addForm">
+      <!-- Form to add a new employee -->
+
+      <div id="formErrors" class="form-errors"></div>
+      <!-- Area to show validation error messages -->
+
+      <label>First name
+        <input type="text" id="addFirstName" required />
+        <!-- Input for first name (required) -->
+      </label>
+
+      <label>Last name
+        <input type="text" id="addLastName" required />
+        <!-- Input for last name (required) -->
+      </label>
+
+      <label>Email
+        <input type="email" id="addEmail" required />
+        <!-- Email input with basic validation (required) -->
+      </label>
+
+      <label>Department
+        <select id="addDepartment" required>
+          <!-- Dropdown to choose department -->
+          <option value="">Select department</option>
+          <option>HR</option>
+          <option>IT</option>
+          <option>Finance</option>
+          <option>Marketing</option>
+        </select>
+      </label>
+
+      <label>Role
+        <input type="text" id="addRole" required />
+        <!-- Input for job role (required) -->
+      </label>
+
+      <div class="modal-buttons">
+        <!-- Container for modal buttons -->
+
+        <button type="button" id="cancelAddBtn">Cancel</button>
+        <!-- Cancel button (does not submit form) -->
+
+        <button type="submit">Add</button>
+        <!-- Submit button to add employee -->
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Filter Modal -->
+<div id="filterModal" class="modal" style="display:none;">
+  <!-- Modal for filtering employees -->
+
+  <div class="modal-content">
+    <!-- Modal content box -->
+
+    <span id="filterClose" class="close">&times;</span>
+    <!-- Close (×) button -->
+
+    <h2>Filter Employees</h2>
+    <!-- Modal title -->
+
+    <form id="filterForm">
+      <!-- Form for filter inputs -->
+
+      <label>First Name:
+        <input type="text" id="filterFirstName" />
+        <!-- Filter by first name -->
+      </label>
+
+      <label>Department:
+        <input type="text" id="filterDepartment" />
+        <!-- Filter by department -->
+      </label>
+
+      <label>Role:
+        <input type="text" id="filterRole" />
+        <!-- Filter by role -->
+      </label>
+
+      <div class="modal-buttons">
+        <!-- Modal control buttons -->
+
+        <button type="button" id="cancelFilterBtn">Reset</button>
+        <!-- Resets filter inputs -->
+
+        <button type="submit">Apply</button>
+        <!-- Applies the filter -->
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+<!-- Links to external JavaScript file that handles interactivity (like modal open/close, form submission, search, etc.) -->
+
+</body>
+</html>
